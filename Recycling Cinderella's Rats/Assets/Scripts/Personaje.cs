@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         if (trash == null) return;
         currentTrash = trash;
         trash.gameObject.SetActive(false);
-    }
+    } 
 
     void TryThrowTrash()
     {
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        ShowMessage("❌ No estás cerca de ninguna caneca", 3);
+        ShowMessage("No estás cerca de ninguna caneca", 3);
     }
 
     // 📌 Mostrar mensaje
