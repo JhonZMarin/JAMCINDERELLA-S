@@ -103,10 +103,10 @@ TextureImporter:
       name: IMG_8272_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 2
-        width: 282
-        height: 230
+        x: 0
+        y: 0
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c9a8e03616eb5624ba7aeebcc3f0b2ea
     internalID: 0
     vertices: []
     indices: 
