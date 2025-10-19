@@ -2162,7 +2162,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- Movimiento del personaje con \"AWSD\"\n- Con la tecla \"E\" se recoge
+  m_text: "- Movimiento del personaje con \"WASD\"\n- Con la tecla \"E\" se recoge
     el residuo\n- Con\_la tecla \"R\"\_se\_tira a la basura"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a48724087bedbd43a220827d8a91a18, type: 2}

@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,12 +11,12 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     [Header("Interacción")]
-    public GameObject interactionZone;  // si lo usas
+    public GameObject interactionZone;
 
     [Header("UI Mensajes")]
-    public GameObject speechBubble;        // Imagen PNG de la burbuja (en Canvas World Space)
-    public TextMeshProUGUI infoText;       // Texto dentro de la burbuja
-    public Vector3 bubbleOffset = new Vector3(5f, 3.5f, 0f); // offset sobre la cabeza (ajusta)
+    public GameObject speechBubble;
+    public TextMeshProUGUI infoText;
+    public Vector3 bubbleOffset = new Vector3(5f, 3.5f, 0f);
 
     private TrashItem currentTrash = null;
     private TrashItem nearbyTrash = null;
@@ -28,12 +27,30 @@ public class PlayerController : MonoBehaviour
 
     [Header("Temporizador")]
     public TextMeshProUGUI timerText;
-    private float timeRemaining = 300f; // 5 minutos
+    private float timeRemaining = 600f;
     private bool gameEnded = false;
 
+    [Header("Audio General")]
+    public AudioSource audioSource;
+    public AudioClip penaltyClip;
+
+    [Header("Audio - Pasos")]
+    public AudioSource footstepsSource;
+    public AudioClip footstepClip;
+    public float stepInterval = 0.4f;
+    private float stepTimer = 0f;
+
+    [Header("Audio - Basura")]
+    public AudioClip throwTrashClip;
+    public AudioClip pickUpTrashClip;
 
     // cámara cacheada
     Camera mainCam;
+
+    // ============================
+    // NUEVO: Contador de desechos
+    // ============================
+    private int totalTrashCount;
 
     void Start()
     {
@@ -46,6 +63,9 @@ public class PlayerController : MonoBehaviour
         ShowMessage("", 0);
 
         if (speechBubble != null) speechBubble.SetActive(false);
+
+        // Contar todos los desechos al inicio
+        totalTrashCount = FindObjectsOfType<TrashItem>().Length;
     }
 
     void Update()
@@ -64,6 +84,9 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("Speed", moveInput.magnitude);
         }
 
+        // --- Sonido de pasos ---
+        HandleFootsteps();
+
         // --- Interacción ---
         if (nearbyTrash != null && currentTrash == null)
         {
@@ -76,7 +99,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (currentTrash != null)
         {
-            if (messageTimer <= 0) ShowMessage($"Llevas: {currentTrash.itemName}", 0);
+            if (messageTimer <= 0) ShowMessage($" {currentTrash.itemName}", 0);
 
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -107,7 +130,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // ===== Interacción por trigger (si usas collider trigger en InteractionZone hijo) =====
+    // ===== Interacción por trigger =====
     void OnTriggerEnter2D(Collider2D other)
     {
         TrashItem trash = other.GetComponent<TrashItem>();
@@ -129,19 +152,25 @@ public class PlayerController : MonoBehaviour
     void PickUpTrash(TrashItem trash)
     {
         if (trash == null) return;
+
         currentTrash = trash;
         trash.gameObject.SetActive(false);
+
+        if (audioSource != null && pickUpTrashClip != null)
+        {
+            audioSource.PlayOneShot(pickUpTrashClip);
+        }
     }
 
     void TryThrowTrash()
     {
         if (currentTrash == null)
         {
-            ShowMessage("No llevas basura", 3);
+            ShowMessage(" Acá No -_-", 2);
             return;
         }
 
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, 1.5f); // rango para detectar caneca
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, 1.5f);
         foreach (Collider2D col in cols)
         {
             TrashBin bin = col.GetComponent<TrashBin>();
@@ -149,25 +178,64 @@ public class PlayerController : MonoBehaviour
             {
                 if (bin.binType == currentTrash.type)
                 {
-                    ShowMessage(":D Correcto!", 3);
+                    ShowMessage(":) Correcto!", 2);
                 }
                 else
                 {
-                    ShowMessage("D: CANECA EQUIVOCADA (-10s)", 3);
+                    ShowMessage("): CANECA EQUIVOCADA", 2);
                     timeRemaining -= 10f;
                     if (timeRemaining < 0) timeRemaining = 0;
+
+                    if (audioSource != null && penaltyClip != null)
+                    {
+                        audioSource.PlayOneShot(penaltyClip);
+                    }
+                }
+
+                if (audioSource != null && throwTrashClip != null)
+                {
+                    audioSource.PlayOneShot(throwTrashClip);
                 }
 
                 Destroy(currentTrash.gameObject);
                 currentTrash = null;
+
+                // ✅ Restar del contador de basura
+                totalTrashCount--;
+                if (totalTrashCount <= 0)
+                {
+                    WinGame();
+                }
+
                 return;
             }
         }
 
-        ShowMessage("No estás cerca de ninguna caneca", 3);
+        ShowMessage("Acá No -_-", 2);
     }
 
-    // 📌 Mostrar mensaje
+    void HandleFootsteps()
+    {
+        bool isMoving = moveInput.magnitude > 0.1f;
+
+        if (isMoving)
+        {
+            if (!footstepsSource.isPlaying)
+            {
+                footstepsSource.clip = footstepClip;
+                footstepsSource.loop = true;
+                footstepsSource.Play();
+            }
+        }
+        else
+        {
+            if (footstepsSource.isPlaying)
+            {
+                footstepsSource.Stop();
+            }
+        }
+    }
+
     void ShowMessage(string message, float duration)
     {
         if (infoText != null && speechBubble != null)
@@ -179,14 +247,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 📌 Ocultar mensaje
     void HideMessage()
     {
         if (speechBubble != null) speechBubble.SetActive(false);
         if (infoText != null) infoText.text = "";
     }
 
-    // 🕒 Actualizar temporizador
     void UpdateTimer()
     {
         if (timeRemaining > 0)
@@ -208,14 +274,17 @@ public class PlayerController : MonoBehaviour
     {
         gameEnded = true;
         ShowMessage("¡Se acabó el tiempo!", 3);
+        SceneManager.LoadScene("Death_Menu");
+    }
 
+    // ✅ NUEVO: Victoria
+    void WinGame()
+    {
+        gameEnded = true;
+        ShowMessage("🎉 ¡HAS GANADO!", 5);
         SceneManager.LoadScene("Win_Menu");
     }
 
-
-    // ============================
-    // Aquí hacemos el CLAMP de la burbuja para que no salga de la cámara
-    // ============================
     void LateUpdate()
     {
         if (speechBubble == null) return;
@@ -224,17 +293,13 @@ public class PlayerController : MonoBehaviour
         if (mainCam == null) mainCam = Camera.main;
         if (mainCam == null) return;
 
-        // posición objetivo (mundo) sobre la cabeza del jugador + offset configurable
         Vector3 targetWorldPos = transform.position + bubbleOffset;
 
-        // Si la cámara es ortográfica (2D típico) usamos world-clamp que es más preciso
         if (mainCam.orthographic)
         {
-            // medio tamaño de la cámara en world units
             float halfHeight = mainCam.orthographicSize;
             float halfWidth = halfHeight * mainCam.aspect;
 
-            // obtener tamaño de la burbuja en unidades mundo
             RectTransform rt = speechBubble.GetComponent<RectTransform>();
             Vector2 rectSize = rt.rect.size;
             Vector3 lossy = rt.lossyScale;
@@ -242,14 +307,12 @@ public class PlayerController : MonoBehaviour
             float bubbleWorldHalfWidth = (rectSize.x * Mathf.Abs(lossy.x)) / 2f;
             float bubbleWorldHalfHeight = (rectSize.y * Mathf.Abs(lossy.y)) / 2f;
 
-            // límites de la cámara en world coords
             Vector3 camPos = mainCam.transform.position;
             float minX = camPos.x - halfWidth + bubbleWorldHalfWidth;
             float maxX = camPos.x + halfWidth - bubbleWorldHalfWidth;
             float minY = camPos.y - halfHeight + bubbleWorldHalfHeight;
             float maxY = camPos.y + halfHeight - bubbleWorldHalfHeight;
 
-            // clamp
             Vector3 clamped = targetWorldPos;
             clamped.x = Mathf.Clamp(clamped.x, minX, maxX);
             clamped.y = Mathf.Clamp(clamped.y, minY, maxY);
@@ -259,9 +322,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // Fallback para cámara perspectiva: clamp en viewport
             Vector3 viewport = mainCam.WorldToViewportPoint(targetWorldPos);
-            float padding = 0.05f; // 5% margen
+            float padding = 0.05f;
             viewport.x = Mathf.Clamp(viewport.x, padding, 1f - padding);
             viewport.y = Mathf.Clamp(viewport.y, padding, 1f - padding);
 
@@ -274,10 +336,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // opcional: para ver el radio de interacción en el editor
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        // si usas interactionZone como trigger, no dibujamos; si quieres dibujar algo, agrega aquí
     }
 }
