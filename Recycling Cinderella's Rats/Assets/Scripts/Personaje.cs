@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Temporizador")]
     public TextMeshProUGUI timerText;
-    private float timeRemaining = 600f;
+    private float timeRemaining = 200f;
     private bool gameEnded = false;
 
     [Header("Audio General")]
