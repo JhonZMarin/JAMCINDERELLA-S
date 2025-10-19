@@ -474,8 +474,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SALIR
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
+  m_sharedMaterial: {fileID: -6700187986148812710, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -764,8 +764,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CLEAN WORLD
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
+  m_sharedMaterial: {fileID: -6700187986148812710, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -900,8 +900,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: JUGAR
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
+  m_sharedMaterial: {fileID: -6700187986148812710, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
