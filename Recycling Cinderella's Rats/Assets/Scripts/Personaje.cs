@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -205,8 +207,11 @@ public class PlayerController : MonoBehaviour
     void EndGame()
     {
         gameEnded = true;
-        ShowMessage(" ¡Se acabó el tiempo!", 10);
+        ShowMessage("¡Se acabó el tiempo!", 3);
+
+        SceneManager.LoadScene("Win_Menu");
     }
+
 
     // ============================
     // Aquí hacemos el CLAMP de la burbuja para que no salga de la cámara
