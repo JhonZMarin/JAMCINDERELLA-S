@@ -140,11 +140,11 @@ public class PlayerController : MonoBehaviour
             {
                 if (bin.binType == currentTrash.type)
                 {
-                    ShowMessage("✅ Correcto!", 3);
+                    ShowMessage(":D Correcto!", 3);
                 }
                 else
                 {
-                    ShowMessage("❌ CANECA EQUIVOCADA (-10s)", 3);
+                    ShowMessage("D: CANECA EQUIVOCADA (-10s)", 3);
                     timeRemaining -= 10f;
                     if (timeRemaining < 0) timeRemaining = 0;
                 }
@@ -198,6 +198,6 @@ public class PlayerController : MonoBehaviour
     void EndGame()
     {
         gameEnded = true;
-        ShowMessage("⏰ ¡Se acabó el tiempo!", 10);
+        ShowMessage(" ¡Se acabó el tiempo!", 10);
     }
 }
