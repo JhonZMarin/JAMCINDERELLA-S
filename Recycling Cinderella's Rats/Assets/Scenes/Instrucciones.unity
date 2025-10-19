@@ -859,8 +859,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: INSTRUCCIONES
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
+  m_sharedMaterial: {fileID: -6700187986148812710, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1304,8 +1304,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: JUGAR
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
+  m_sharedMaterial: {fileID: -6700187986148812710, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1978,8 +1978,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Con la tecla \"E\" se recoge y\_con\_la tecla \"R\"\_se\_tira"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a48724087bedbd43a220827d8a91a18, type: 2}
+  m_sharedMaterial: {fileID: 6730359372359145131, guid: 6a48724087bedbd43a220827d8a91a18, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2495,8 +2495,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
+  m_sharedMaterial: {fileID: -6700187986148812710, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3310,7 +3310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4791057540386810124, guid: aed7cff2117107548b0184afa83aef7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e78aec1e57caee439a67fa6e694fe4d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

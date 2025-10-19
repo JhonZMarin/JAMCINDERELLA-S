@@ -346,8 +346,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\xA1Moriste! \nEl mundo no soport\xF3 tanta basura "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a48724087bedbd43a220827d8a91a18, type: 2}
+  m_sharedMaterial: {fileID: 6730359372359145131, guid: 6a48724087bedbd43a220827d8a91a18, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -557,8 +557,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Configuraci\xF3n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
+  m_sharedMaterial: {fileID: -6700187986148812710, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -890,8 +890,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Salir del juego \n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
+  m_sharedMaterial: {fileID: -6700187986148812710, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1558,8 +1558,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Volver al inicio '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
-  m_sharedMaterial: {fileID: -4077804204217506103, guid: 1a8f202cd9b3fff40aaa34c5b4a13192, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
+  m_sharedMaterial: {fileID: -6700187986148812710, guid: dfd9805d7da779e498c2c36192b83a01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
