@@ -6,34 +6,44 @@ public class AudioSettingsManager : MonoBehaviour
     public Slider volumeSlider;
     private const string volumeKey = "gameVolume";
 
+    private float savedVolume;  // volumen guardado real
+    private float tempVolume;   // volumen temporal para cambios sin guardar
+
     void Start()
     {
-        // Cargar volumen guardado
-        if (PlayerPrefs.HasKey(volumeKey))
-        {
-            float savedVolume = PlayerPrefs.GetFloat(volumeKey);
-            AudioListener.volume = savedVolume;
-            volumeSlider.value = savedVolume;
-        }
-        else
-        {
-            AudioListener.volume = 1f;
-            volumeSlider.value = 1f;
-        }
+        // Cargar volumen guardado (o por defecto)
+        savedVolume = PlayerPrefs.GetFloat(volumeKey, 1f);
+        tempVolume = savedVolume;
 
-        // Escuchar cambios en tiempo real
-        volumeSlider.onValueChanged.AddListener(ChangeVolume);
+        volumeSlider.value = savedVolume;
+        AudioListener.volume = savedVolume;
+
+        // Escucha los cambios en el slider
+        volumeSlider.onValueChanged.AddListener(OnVolumeChange);
     }
 
-    public void ChangeVolume(float value)
+    // Cuando mueves el slider
+    void OnVolumeChange(float value)
     {
-        AudioListener.volume = value;
+        tempVolume = value;
+        AudioListener.volume = value; // se escucha el cambio, pero no se guarda
     }
 
+    // Cuando presionas "Guardar"
     public void SaveVolume()
     {
-        PlayerPrefs.SetFloat(volumeKey, volumeSlider.value);
+        savedVolume = tempVolume;
+        PlayerPrefs.SetFloat(volumeKey, savedVolume);
         PlayerPrefs.Save();
-        Debug.Log("Volumen guardado: " + volumeSlider.value);
+        Debug.Log("Volumen guardado: " + savedVolume);
+    }
+
+    // Cuando sales sin guardar (por ejemplo al presionar "Volver")
+    public void RevertVolume()
+    {
+        tempVolume = savedVolume;
+        AudioListener.volume = savedVolume;
+        volumeSlider.value = savedVolume;
+        Debug.Log("Volumen revertido al guardado: " + savedVolume);
     }
 }
