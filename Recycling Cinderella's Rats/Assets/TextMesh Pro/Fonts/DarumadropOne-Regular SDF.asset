@@ -3541,6 +3541,7 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: -1837762544
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 82
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -3572,6 +3573,9 @@ MonoBehaviour:
       m_FeatureLookupFlags: 1736112144
     - m_FirstAdjustmentRecord:
         m_GlyphIndex: 82
+=======
+        m_GlyphIndex: 119
+>>>>>>> Karen_Carrillo
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
@@ -3584,7 +3588,11 @@ MonoBehaviour:
           m_YPlacement: 0
           m_XAdvance: 0
           m_YAdvance: 0
+<<<<<<< HEAD
       m_FeatureLookupFlags: 1736112144
+=======
+      m_FeatureLookupFlags: 345569296
+>>>>>>> Karen_Carrillo
     m_MarkToBaseAdjustmentRecords: []
     m_MarkToMarkAdjustmentRecords: []
   m_ShouldReimportFontFeatures: 0
