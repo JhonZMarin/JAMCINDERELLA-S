@@ -827,6 +827,7 @@ MonoBehaviour:
   interactionZone: {fileID: 1423053494}
   speechBubble: {fileID: 71214167}
   infoText: {fileID: 228144500}
+  bubbleOffset: {x: 5, y: 3.5, z: 0}
   timerText: {fileID: 1845852167}
 --- !u!212 &962488406
 SpriteRenderer:
